@@ -56,7 +56,3 @@ The lab focuses on the installation and setup of a **Linux Server** using VMware
 - VMware Workstation Pro  
 - Ubuntu Server ISO  
 - SSH Client (Windows)  
-
----
-
-## 📂 Repository Structure
