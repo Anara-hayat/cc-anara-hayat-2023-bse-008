@@ -1,0 +1,11 @@
+variable "env_prefix" { type = string }
+variable "instance_name" { type = string }
+variable "instance_suffix" { type = string }
+variable "instance_type" { type = string }
+variable "availability_zone" { type = string }
+variable "vpc_id" { type = string }
+variable "subnet_id" { type = string }
+variable "security_group_id" { type = string }
+variable "public_key" { type = string }
+variable "script_path" { type = string }
+variable "common_tags" { type = map(string) }
