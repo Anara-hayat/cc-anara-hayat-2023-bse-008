@@ -4,3 +4,6 @@
 [submodule "Lab12"]
 	path = Lab12
 	url = git@github.com:Anara-hayat/Lab12.git
+[submodule "Lab13"]
+	path = Lab13
+	url = git@github.com:Anara-hayat/Lab13.git
