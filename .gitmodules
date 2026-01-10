@@ -10,3 +10,6 @@
 [submodule "cc-anara-hayat-2023-bse-008"]
 	path = cc-anara-hayat-2023-bse-008
 	url = https://github.com/Anara-hayat/Lab14.git
+[submodule "Lab14"]
+	path = Lab14
+	url = https://github.com/Anara-hayat/Lab14.git
