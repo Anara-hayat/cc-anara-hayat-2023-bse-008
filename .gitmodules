@@ -16,3 +16,6 @@
 [submodule "LabProject_FrontendBackend"]
 	path = LabProject_FrontendBackend
 	url = https://github.com/Anara-hayat/LabProject_FrontendBackend.git
+[submodule "Assignment1"]
+	path = Assignment1
+	url = git@github.com:Anara-hayat/assignment1.git
