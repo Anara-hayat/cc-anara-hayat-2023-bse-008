@@ -13,3 +13,6 @@
 [submodule "Lab14"]
 	path = Lab14
 	url = https://github.com/Anara-hayat/Lab14.git
+[submodule "LabProject_FrontendBackend"]
+	path = LabProject_FrontendBackend
+	url = https://github.com/Anara-hayat/LabProject_FrontendBackend.git
