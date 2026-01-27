@@ -1,0 +1,12 @@
+---
+all:
+  vars:
+    ansible_user: ubuntu
+    ansible_private_key_file: ~/.ssh/project9-key
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    ansible_python_interpreter: /usr/bin/python3.9
+
+monitoring_servers:
+  hosts:
+    monitoring-server:
+      ansible_host: 35.170.79.101

@@ -1,0 +1,6 @@
+aws_region         = "us-east-1"
+environment        = "dev"
+key_name           = "project9-key"
+your_ip            = "0.0.0.0/0"  
+app_server_count   = 2
+instance_type      = "t2.micro"

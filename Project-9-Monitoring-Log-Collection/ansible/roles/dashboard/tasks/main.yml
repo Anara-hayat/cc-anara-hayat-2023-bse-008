@@ -1,0 +1,61 @@
+---
+- name: Update apt cache
+  shell: apt-get update
+  become: yes
+  changed_when: false
+
+- name: Install Nginx
+  shell: apt-get install -y nginx
+  become: yes
+
+- name: Enable and start Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+  become: yes
+
+- name: Create web root directory
+  file:
+    path: /var/www/html
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: '0755'
+  become: yes
+
+- name: Create reports directory
+  file:
+    path: /var/www/html/reports
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: '0755'
+  become: yes
+
+- name: Configure Nginx default site
+  copy:
+    content: |
+      server {
+          listen 80 default_server;
+          listen [::]:80 default_server;
+
+          server_name _;
+
+          root /var/www/html;
+          index index.html;
+
+          location / {
+              try_files $uri $uri/ =404;
+          }
+
+          location /reports/ {
+              autoindex on;
+          }
+
+          access_log /var/log/nginx/access.log;
+          error_log /var/log/nginx/error.log;
+      }
+    dest: /etc/nginx/sites-available/default
+  become: yes
+  notify: reload nginx

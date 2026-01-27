@@ -1,0 +1,47 @@
+# Terraform
+**/.terraform/*
+**/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+terraform_1.6.0_linux_amd64.zip
+*.tfvars
+!*.tfvars.example
+crash.log
+crash.*.log
+
+# Ansible
+*.retry
+.vault_pass
+*.secret
+__pycache__/
+
+# Credentials & Keys
+.aws/
+*.pem
+*.key
+*.pub
+!project9-key.pub
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs & Temp
+*.log
+logs/
+.env
+.env.local
+*.backup
+*.bak
+tmp/
+temp/
+
+# Python
+*.pyc
+venv/
+env/

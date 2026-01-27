@@ -1,0 +1,10 @@
+app_server_count = 2
+app_servers_private_ips = [
+  "10.0.10.25",
+  "10.0.11.105",
+]
+monitoring_server_private_ip = "10.0.1.65"
+monitoring_server_public_dns = "ec2-35-170-79-101.compute-1.amazonaws.com"
+monitoring_server_public_ip = "35.170.79.101"
+vpc_id = "vpc-0eecc28c4311acf90"
+

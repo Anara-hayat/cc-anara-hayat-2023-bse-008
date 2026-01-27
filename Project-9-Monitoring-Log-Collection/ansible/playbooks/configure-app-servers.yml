@@ -1,0 +1,6 @@
+---
+- name: Configure Application Servers
+  hosts: all
+
+  roles:
+    - nginx-app

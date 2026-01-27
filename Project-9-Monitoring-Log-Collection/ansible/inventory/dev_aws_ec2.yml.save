@@ -1,0 +1,17 @@
+
+app_servers:
+  hosts:
+    app-server-1:
+      ansible_host: 10.0.10.60
+      ansible_user: ubuntu
+      ansible_python_interpreter: /usr/bin/python3
+      ansible_ssh_private_key_file: ~/.ssh/project9-key
+      ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o ProxyJump=ubuntu@35.170.79.101'
+      
+    app-server-2:
+      ansible_host: 10.0.11.17
+      ansible_user: ubuntu
+      ansible_python_interpreter: /usr/bin/python3
+      ansible_ssh_private_key_file: ~/.ssh/project9-key
+      ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o ProxyJump=ubuntu@35.170.79.101'
+

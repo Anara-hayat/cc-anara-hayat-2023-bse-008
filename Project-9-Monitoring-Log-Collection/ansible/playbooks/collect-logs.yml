@@ -1,0 +1,11 @@
+---
+- name: Collect Logs from Application Servers
+  hosts: monitoring_servers
+  
+  tasks:
+    - name: Create logs collection directory
+      file:
+        path: /tmp/collected-logs/{{ ansible_date_time.date }}
+        state: directory
+      become: yes
+      when: false

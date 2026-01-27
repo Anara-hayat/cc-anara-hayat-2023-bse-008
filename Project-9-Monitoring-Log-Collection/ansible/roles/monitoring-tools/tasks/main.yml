@@ -1,0 +1,94 @@
+---
+- name: Update apt cache
+  shell: apt-get update
+  become: yes
+  changed_when: false
+
+- name: Install monitoring tools dependencies
+  shell: apt-get install -y curl net-tools htop
+  become: yes
+
+- name: Create reports directory
+  file:
+    path: /var/www/html/reports
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: '0755'
+  become: yes
+
+- name: Copy collect-metrics script
+  copy:
+    src: collect-metrics.sh
+    dest: /usr/local/bin/collect-metrics.sh
+    mode: '0755'
+  become: yes
+
+- name: Copy check-services script
+  copy:
+    src: check-services.sh
+    dest: /usr/local/bin/check-services.sh
+    mode: '0755'
+  become: yes
+
+- name: Copy http-health-check script
+  copy:
+    src: http-health-check.sh
+    dest: /usr/local/bin/http-health-check.sh
+    mode: '0755'
+  become: yes
+
+- name: Copy generate-report script
+  copy:
+    src: generate-report.sh
+    dest: /usr/local/bin/generate-report.sh
+    mode: '0755'
+  become: yes
+
+- name: Copy build-dashboard script
+  copy:
+    src: build-dashboard.sh
+    dest: /usr/local/bin/build-dashboard.sh
+    mode: '0755'
+  become: yes
+
+- name: Set up cron job for metrics (every 5 minutes)
+  cron:
+    name: "Collect metrics"
+    minute: "*/5"
+    job: "/usr/local/bin/collect-metrics.sh >> /var/log/monitoring.log 2>&1"
+    user: root
+  become: yes
+
+- name: Set up cron job for service checks (every 5 minutes)
+  cron:
+    name: "Check services"
+    minute: "*/5"
+    job: "/usr/local/bin/check-services.sh >> /var/log/monitoring.log 2>&1"
+    user: root
+  become: yes
+
+- name: Set up cron job for health checks (every 5 minutes)
+  cron:
+    name: "Health checks"
+    minute: "*/5"
+    job: "/usr/local/bin/http-health-check.sh >> /var/log/monitoring.log 2>&1"
+    user: root
+  become: yes
+
+- name: Set up cron job for dashboard build (every 5 minutes)
+  cron:
+    name: "Build dashboard"
+    minute: "*/5"
+    job: "/usr/local/bin/build-dashboard.sh >> /var/log/monitoring.log 2>&1"
+    user: root
+  become: yes
+
+- name: Set up daily report cron (daily at 11:59 PM)
+  cron:
+    name: "Daily report"
+    hour: "23"
+    minute: "59"
+    job: "/usr/local/bin/generate-report.sh >> /var/log/monitoring.log 2>&1"
+    user: root
+  become: yes
